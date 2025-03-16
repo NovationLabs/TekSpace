@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>TekSpace Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css" />
+
+    <link rel="stylesheet" href="../css/temp.css" />
+
+    <link rel="icon" href="../assets/tekspace-logo.png" type="image/png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <!-- flaticon's icons -->
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-regular-chubby/css/uicons-regular-chubby.css'>
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.6.0/uicons-solid-chubby/css/uicons-solid-chubby.css'>
+</head>
+
+<body>
+    <div id="app">
+        <!-- SIDEBAR -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>TekSpace</h2>
+                <button class="theme-button" id="theme-toggle">
+                    <i class="fi fi-rc-moon"></i>
+                    <i class="fi fi-sc-moon"></i>
+                </button>
+            </div>
+            <ul class="project-list" id="project-list">
+                <!-- Projects appended -->
+            </ul>
+            <button id="new-project-btn">+ New Project</button>
+            <div class="share-actions">
+                <button id="export-btn">Export</button>
+                <button id="import-btn">Import</button>
+            </div>
+
+            <input type="file" id="import-input" accept=".json" style="display: none;" />
+        </div>
+
+        <!-- CONTENT AREA -->
+        <div class="content">
+            <header>
+                <h1>Task Dashboard</h1>
+                <div id="connection-status" class="connection-status">
+                    <svg aria-hidden="true" viewBox="0 0 512 512" class="connection-icon">
+                        <path fill="currentColor" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
+                    </svg>
+                    <span class="connection-text">Connected</span>
+                </div>
+            </header>
+
+            <div id="project-content">
+                <!-- Shown when a project is selected -->
+                <div id="project-header">
+                    <h2 id="project-title"></h2>
+                </div>
+
+                <form id="new-task-form" style="display: none;">
+                    <input type="text" id="task-name" placeholder="Task Name" required />
+                    <select id="task-state" required>
+                        <option value="">State</option>
+                        <option value="Completed">Completed</option>
+                        <option value="In Process">In Process</option>
+                        <option value="Not started">Not started</option>
+                    </select>
+                    <input type="text" id="task-category" placeholder="Category" />
+                    <input type="number" id="task-percent" placeholder="%" min="0" max="100" />
+                    <button type="submit">Add Task</button>
+                </form>
+
+                <table id="task-table" style="display: none;">
+                    <thead>
+                        <tr>
+                            <th>Task</th>
+                            <th>State</th>
+                            <th>Category</th>
+                            <th>Progress</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="task-table-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL OVERLAY (for new project, edit task, rename, confirm delete, etc.) -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal" id="modal"></div>
+    </div>
+    <script src="../js/scripts.js"></script>
+</body>
+
+</html>

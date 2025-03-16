@@ -1,0 +1,248 @@
+/************************************************
+* 1. GENERAL STYLES
+************************************************/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background 0.3s, color 0.3s;
+}
+
+:root {
+    --bg-color: #f0f2f5;
+    --text-color: #333;
+    --sidebar-bg: #18191a;
+    --sidebar-text: #fff;
+    --menu-bg: #2a2b2c;
+    --menu-text: #fff;
+    --card-bg: #fff;
+    --card-text: #333;
+}
+
+body.dark-mode {
+    --bg-color: #1c1e21;
+    --text-color: #fff;
+    --sidebar-bg: #242526;
+    --sidebar-text: #fff;
+    --menu-bg: #3a3b3c;
+    --menu-text: #fff;
+    --card-bg: #2a2b2c;
+    --card-text: #fff;
+}
+
+button, .project-list li, .state-pill, .project-menu {
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#app {
+    height: 100vh;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+/************************************************
+* 2. SIDEBAR
+************************************************/
+.sidebar {
+    width: 280px;
+    background: var(--sidebar-bg);
+    color: var(--sidebar-text);
+    height: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    margin-bottom: 0.2rem;
+    font-weight: 600;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+#theme-toggle {
+    background: transparent;
+    font-size: 1.2rem;
+    width: 10%;
+    margin-top: 0rem;
+    padding: 0rem;
+}
+
+#theme-toggle:hover {
+    background: transparent;
+}
+
+.fi-sc-moon {
+    display: none;
+}
+
+.dark-mode .fi-rc-moon {
+    display: none;
+}
+
+.dark-mode .fi-sc-moon {
+    display: inline-block;
+}
+
+.project-list {
+    margin: 100;
+    padding: 0;
+    list-style: none;
+}
+
+.project-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.3rem;
+    border-radius: 4px;
+    position: relative;
+}
+
+.project-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.project-name {
+    flex: 1;
+    padding: 0.3rem 0.7rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.project-dots {
+    width: 20px;
+    height: 15px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.dots-icon {
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: #ccc;
+    border-radius: 50%;
+    box-shadow: 0 6px #ccc, 0 12px #ccc;
+    position: relative;
+}
+
+.project-dots:hover .dots-icon {
+    background: #fff;
+    box-shadow: 0 6px #fff, 0 12px #fff;
+}
+
+.project-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    margin-top: 4px;
+    background: var(--menu-bg);
+    color: var(--menu-text);
+    border-radius: 6px;
+    display: none;
+    flex-direction: column;
+    z-index: 999;
+    animation: fadeIn 0.2s ease;
+    min-width: 120px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-menu::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    right: 12px;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid var(--menu-bg);
+}
+
+.project-menu button {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 0.7rem 1rem;
+    width: 100%;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--menu-text);
+}
+
+.project-menu button:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.sidebar button {
+    width: 100%;
+    margin-top: 1rem;
+    background: #4c83ff;
+    border: none;
+    color: #fff;
+    padding: 0.7rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.sidebar button:hover {
+    background: #3b6ad8;
+}
+
+.share-actions {
+    margin-top: 1rem;
+    display: flex;
+    gap: 0.5rem;
+}
+
+.content {
+    margin-left: 280px;
+    padding: 1rem 2rem;
+    height: 100%;
+    overflow-y: auto;
+    animation: fadeIn 0.4s ease;
+    transition: margin-left 0.3s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+header h1 {
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.5rem;
+}
