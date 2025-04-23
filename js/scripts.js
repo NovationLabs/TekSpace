@@ -463,7 +463,7 @@ function exportData() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = `dashboard-export-${new Date().toISOString().split('T')[0]}.json`;
+    a.download = `dashboard-export-${new Date().toISOString().split('T')[0]}.tek`;
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
